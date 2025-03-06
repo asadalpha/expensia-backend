@@ -57,7 +57,7 @@ const subscriptionSchema = new mongoose.Schema(
         message: "Renewal date must be after start date",
       },
     },
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
@@ -69,7 +69,7 @@ const subscriptionSchema = new mongoose.Schema(
   }
 );
 
-subscriiptionSchema.pre("save", function (next) {
+subscriptionSchema.pre("save", function (next) {
   if (!this.renewalDate) {
     const renewalPeriods = {
       daily: 1,
